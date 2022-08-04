@@ -6,7 +6,7 @@
 #    By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 10:32:35 by jschneid          #+#    #+#              #
-#    Updated: 2022/08/03 13:49:04 by jschneid         ###   ########.fr        #
+#    Updated: 2022/08/04 11:22:27 by jschneid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = so_long
 
 FLAGS = -Wall -Werror -Wextra -Imlx -c $< -o $@
 
-MANDATORY = main.c map.c
+MANDATORY = main.c map.c get_next_line.c get_next_line_utils.c
 
 CC = cc
 
