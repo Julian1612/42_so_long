@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:08:43 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/04 17:52:51 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/04 18:08:42 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,12 @@ void	build_window(void)
 
 void	link_images(t_var *vars)
 {
-	vars->relative_path_zero
-		= "./images/zero.xpm";
-	vars->relative_path_one
-		= "./images/one.xpm";
-	vars->relative_path_collectible
-		= "./images/collectible.xpm";
-	vars->relative_path_exit
-		= "./images/exit.xpm";
-	vars->relative_path_one
-		= "./images/one.xpm";
-	vars->relative_path_player
-		= "./images/player.xpm";
+	vars->relative_path_zero = "./images/zero.xpm";
+	vars->relative_path_one = "./images/one.xpm";
+	vars->relative_path_collectible = "./images/collectible.xpm";
+	vars->relative_path_exit = "./images/exit.xpm";
+	vars->relative_path_one = "./images/one.xpm";
+	vars->relative_path_player = "./images/player.xpm";
 }
 
 void	xpm_to_file(t_var *vars)
@@ -60,30 +54,6 @@ void	xpm_to_file(t_var *vars)
 			&image_width, &image_height);
 	vars->player = mlx_xpm_file_to_image(vars->mlx, vars->relative_path_player,
 			&image_width, &image_height);
-}
-
-int	get_height(void)
-{
-	int	fd;
-	int	width;
-
-	width = 0;
-	fd = open("./map/map.ber", O_RDONLY);
-	while (get_next_line(fd))
-		width += 165;
-	close (fd);
-	return (width);
-}
-
-int	get_length(void)
-{
-	int	fd;
-	int	length;
-
-	fd = open("./map/map.ber", O_RDONLY);
-	length = 165 * (ft_strlen(get_next_line(fd)) - 1);
-	close(fd);
-	return (length);
 }
 
 void	build_map(t_var *vars)

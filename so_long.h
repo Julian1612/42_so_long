@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/04 17:35:27 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/04 18:08:17 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,22 @@
 ////////////////////
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 10
 # endif
 
 typedef struct s_var {
 	void	*mlx;
 	void	*window;
 	void	*image;
-	void	*one;
-	void	*zero;
 	char	*address;
 	int		line_length;
 	int		bites_per_pixel;
 	int		endian;
+	void	*one;
+	void	*zero;
 	char	*collectible;
 	char	*exit;
 	char	*player;
-
 	char	*relative_path_zero;
 	char	*relative_path_one;
 	char	*relative_path_collectible;
@@ -58,15 +57,10 @@ char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlcpy(char *dst, const char *src, size_t destsize);
-int		get_length(void);
 size_t	ft_strlen(const char *a);
 int		get_height(void);
+int		get_length(void);
 void	build_map(t_var *vars);
-void	put_collectible(t_var *vars, int width, int height);
-void	put_wall(t_var *vars, int width, int height);
-void	put_collectible(t_var *vars, int width, int height);
-void	put_exit(t_var *vars, int width, int height);
-void	put_player(t_var *vars, int width, int height);
 void	render_image(t_var *vars, int width, int height, int index, char *line);
 void	xpm_to_file(t_var *vars);
 void	link_images(t_var *vars);
