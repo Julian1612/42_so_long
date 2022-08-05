@@ -6,38 +6,38 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:08:43 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/04 18:08:42 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/05 02:13:36 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	build_window(void)
-{
-	t_var	vars;
+// void	build_window(void)
+// {
+// 	t_var	vars;
 
-	vars.mlx = mlx_init();
-	link_images(&vars);
-	vars.window
-		= mlx_new_window(vars.mlx, get_length(), get_height(), "Space Hunter");
-	vars.image = mlx_new_image(vars.mlx, get_length(), get_height());
-	vars.address = mlx_get_data_addr(vars.image, &vars.bites_per_pixel,
-			&vars.line_length, &vars.endian);
-	xpm_to_file(&vars);
-	mlx_put_image_to_window(vars.mlx, vars.window, vars.image, 0, 0);
-	build_map(&vars);
-	mlx_loop(vars.mlx);
-}
+// 	vars.mlx = mlx_init();
+// 	link_images(&vars);
+// 	vars.window
+// 		= mlx_new_window(vars.mlx, get_length(), get_height(), "Space Hunter");
+// 	vars.image = mlx_new_image(vars.mlx, get_length(), get_height());
+// 	vars.address = mlx_get_data_addr(vars.image, &vars.bites_per_pixel,
+// 			&vars.line_length, &vars.endian);
+// 	xpm_to_file(&vars);
+// 	mlx_put_image_to_window(vars.mlx, vars.window, vars.image, 0, 0);
+// 	build_map(&vars);
+// 	mlx_loop(vars.mlx);
+// }
 
-void	link_images(t_var *vars)
-{
-	vars->relative_path_zero = "./images/zero.xpm";
-	vars->relative_path_one = "./images/one.xpm";
-	vars->relative_path_collectible = "./images/collectible.xpm";
-	vars->relative_path_exit = "./images/exit.xpm";
-	vars->relative_path_one = "./images/one.xpm";
-	vars->relative_path_player = "./images/player.xpm";
-}
+// void	link_images(t_var *vars)
+// {
+// 	vars->relative_path_zero = "./images/zero.xpm";
+// 	vars->relative_path_one = "./images/one.xpm";
+// 	vars->relative_path_collectible = "./images/collectible.xpm";
+// 	vars->relative_path_exit = "./images/exit.xpm";
+// 	vars->relative_path_one = "./images/one.xpm";
+// 	vars->relative_path_player = "./images/player.xpm";
+// }
 
 void	xpm_to_file(t_var *vars)
 {
@@ -98,6 +98,10 @@ void	render_image(t_var *vars, int width, int height, int index, char *line)
 		mlx_put_image_to_window(vars->mlx, vars->window,
 			vars->exit, width, height);
 	if (line[index] == 'P')
+	{
+		vars->player_width = width;
+		vars->player_height = height;
 		mlx_put_image_to_window(vars->mlx, vars->window,
-			vars->player, width, height);
+			vars->player, vars->player_width, vars->player_height);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/04 18:08:17 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/05 02:09:42 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ typedef struct s_var {
 	char	*relative_path_collectible;
 	char	*relative_path_exit;
 	char	*relative_path_player;
+	int		player_width;
+	int		player_height;
+	int		test;
 }	t_var;
 
 void	build(void);
@@ -64,5 +67,6 @@ void	build_map(t_var *vars);
 void	render_image(t_var *vars, int width, int height, int index, char *line);
 void	xpm_to_file(t_var *vars);
 void	link_images(t_var *vars);
+int		move_player(void);
 
 #endif
