@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/05 02:09:42 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/08 11:34:36 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,24 @@ typedef struct s_var {
 	void	*zero;
 	char	*collectible;
 	char	*exit;
-	char	*player;
+	char	*player_up;
+	char	*player_down;
+	char	*player_left;
+	char	*player_right;
 	char	*relative_path_zero;
 	char	*relative_path_one;
 	char	*relative_path_collectible;
 	char	*relative_path_exit;
-	char	*relative_path_player;
+	char	*relative_path_player_up;
+	char	*relative_path_player_down;
+	char	*relative_path_player_left;
+	char	*relative_path_player_right;
 	int		player_width;
 	int		player_height;
+	int		map_height;
+	int		map_width;
+	int		collectible_width;
+	int		collectible_height;
 	int		test;
 }	t_var;
 
@@ -61,12 +71,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlcpy(char *dst, const char *src, size_t destsize);
 size_t	ft_strlen(const char *a);
-int		get_height(void);
-int		get_length(void);
+void	get_map_height(t_var	*vars);
+void	get_map_width(t_var	*vars);
 void	build_map(t_var *vars);
-void	render_image(t_var *vars, int width, int height, int index, char *line);
 void	xpm_to_file(t_var *vars);
 void	link_images(t_var *vars);
-int		move_player(void);
+int		move_player(int keycode, t_var *vars);
+void	build_background(t_var *vars);
+void	palce_player(t_var *vars);
+void	palce_collectible(t_var *vars);
 
 #endif
