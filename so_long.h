@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/08 11:34:36 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/09 14:50:33 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_var {
 	int		map_width;
 	int		collectible_width;
 	int		collectible_height;
-	int		test;
+	char	**map;
 }	t_var;
 
 void	build(void);
@@ -80,5 +80,7 @@ int		move_player(int keycode, t_var *vars);
 void	build_background(t_var *vars);
 void	palce_player(t_var *vars);
 void	palce_collectible(t_var *vars);
+void	initialize_map(t_var *vars);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 #endif

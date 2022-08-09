@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 23:27:10 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/08 13:29:10 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/08 14:37:01 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	palce_player(t_var *vars)
 
 int	move_player(int keycode, t_var *vars)
 {
-	if (keycode == 0 || keycode == 123 || keycode == 1 || keycode == 125 || keycode == 2 || keycode == 12 || keycode == 13 || keycode == 126)
+	if (keycode == 0 || keycode == 123 || keycode == 1 || keycode == 125 || keycode == 2 || keycode == 124 || keycode == 13 || keycode == 126)
 		build_background(vars);
 	if (vars->player_height != vars->collectible_height || vars->player_width != vars->collectible_width)
 		palce_collectible(vars);
