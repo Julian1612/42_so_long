@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/09 14:50:33 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/10 21:04:33 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,21 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlcpy(char *dst, const char *src, size_t destsize);
 size_t	ft_strlen(const char *a);
-void	get_map_height(t_var	*vars);
-void	get_map_width(t_var	*vars);
+void	get_map_measure(t_var	*vars);
 void	build_map(t_var *vars);
 void	xpm_to_file(t_var *vars);
 void	link_images(t_var *vars);
 int		move_player(int keycode, t_var *vars);
 void	build_background(t_var *vars);
-void	palce_player(t_var *vars);
+void	palce_player(t_var *vars, int direction);
 void	palce_collectible(t_var *vars);
 void	initialize_map(t_var *vars);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	palce_walls(t_var *vars);
+void	palce_exit(t_var *vars);
+void	new_render(t_var *vars, int direction);
+int		move_up(t_var *vars);
+int		move_down(t_var *vars);
+int		move_left(t_var *vars);
+int		move_right(t_var *vars);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 16:08:45 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/09 20:48:16 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/10 21:05:23 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,21 @@ void	build_window(void)
 {
 	t_var	vars;
 
-
-	get_map_width(&vars);
-	get_map_height(&vars);
+	get_map_measure(&vars);
 	initialize_map(&vars);
 	vars.mlx = mlx_init();
 	link_images(&vars);
-	vars.window = mlx_new_window(vars.mlx, vars.map_width, vars.map_height, "Space Jamming");
-	vars.image = mlx_new_image(vars.mlx, vars.map_width, vars.map_height);
+	vars.window = mlx_new_window(vars.mlx, (vars.map_width * 165), (vars.map_height * 165), "Space Jamming");
+	vars.image = mlx_new_image(vars.mlx, (vars.map_width * 165), (vars.map_height *165));
 	vars.address = mlx_get_data_addr(vars.image, &vars.bites_per_pixel,
 			&vars.line_length, &vars.endian);
 	xpm_to_file(&vars);
 	build_background(&vars);
 	palce_collectible(&vars);
-	printf("vars->map[0]] = %s\n", vars.map[0]);
-	printf("vars->map[1]] = %s\n", vars.map[1]);
-	printf("vars->map[2]] = %s\n", vars.map[2]);
-	printf("vars->map[3]] = %s\n", vars.map[3]);
-	// palce_player(&vars);
+	palce_walls(&vars);
+	palce_player(&vars, 1);
+	palce_exit(&vars);
 	mlx_key_hook(vars.window, move_player, &vars);
-	printf("hi11\n");
 	mlx_loop(vars.mlx);
 }
 
@@ -46,9 +41,9 @@ void	build_background(t_var *vars)
 
 	width = 0;
 	height = 0;
-	while (height < vars->map_height)
+	while (height < (vars->map_height * 165))
 	{
-		while (width < vars->map_width)
+		while (width < (vars->map_width * 165))
 		{
 			mlx_put_image_to_window(vars->mlx, vars->window, vars->zero, width, height);
 			width += 165;
@@ -58,24 +53,18 @@ void	build_background(t_var *vars)
 	}
 }
 
-void	get_map_height(t_var *vars)
+void	get_map_measure(t_var *vars)
 {
 	int		fd;
+	char	*line;
 
-	vars->map_height = 0;
 	fd = open("./map/map.ber", O_RDONLY);
+	vars->map_height = 1;
+	line = get_next_line(fd);
 	while (get_next_line(fd))
-		vars->map_height += 165;
+		vars->map_height += 1;
+	vars->map_width = (ft_strlen(line) - 1);
 	close (fd);
-}
-
-void	get_map_width(t_var	*vars)
-{
-	int		fd;
-
-	fd = open("./map/map.ber", O_RDONLY);
-	vars->map_width = 165 * (ft_strlen(get_next_line(fd)) - 1);
-	close(fd);
 }
 
 void	initialize_map(t_var *vars)
@@ -87,9 +76,8 @@ void	initialize_map(t_var *vars)
 	int		y;
 
 	fd = open("./map/map.ber", O_RDONLY);
-	x = (vars->map_height / 165) + 1;
-	y = (vars->map_width / 165) + 1;
-	printf("x: %d y: %d\n", x, y);
+	x = vars->map_height;
+	y = (vars->map_width + 1);
 	vars->map = (char **) malloc(x * sizeof(char *));
 	index = 0;
 	while (index < x)
@@ -98,6 +86,7 @@ void	initialize_map(t_var *vars)
 		line = get_next_line(fd);
 		ft_strlcpy(vars->map[index], line, y);
 		free(line);
+		printf("vars->map[%d] = %s\n", index, vars->map[index]);
 		index ++;
 	}
 	close(fd);
