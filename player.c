@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 23:27:10 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/10 21:04:51 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/11 17:07:56 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	palce_player(t_var *vars, int direction)
 					mlx_put_image_to_window(vars->mlx, vars->window, vars->player_left, (index_2 * 165), (index_1 * 165));
 				if (direction == 4)
 					mlx_put_image_to_window(vars->mlx, vars->window, vars->player_right, (index_2 * 165), (index_1 * 165));
+				return ;
 			}
 			index_2 ++;
 		}
@@ -51,13 +52,17 @@ int	move_player(int keycode, t_var *vars)
 	int	direction;
 
 	direction = 0;
+	vars->moves += 1;
+	vars->collectible_counter = count_collectibles(vars);
+	printf("collectibles: %d available: %d\n", vars->collletibles_beginning ,vars->collectible_counter); // use my printf !!
+	printf("%d\n", vars->moves); // use my printf !!
 	if (keycode == 13)
 		direction = move_up(vars);
-	if (keycode == 1)
+	else if (keycode == 1)
 		direction = move_down(vars);
-	if (keycode == 0)
+	else if (keycode == 0)
 		direction = move_left(vars);
-	if (keycode == 2)
+	else if (keycode == 2)
 		direction = move_right(vars);
 	new_render(vars, direction);
 	return (0);
@@ -85,6 +90,8 @@ int	move_up(t_var *vars)
 		{
 			if (vars->map[index_1][index_2] == 'P')
 			{
+				if (vars->map[index_1 - 1][index_2] == '1')
+					return (1);
 				vars->map[index_1 - 1][index_2] = 'P';
 				vars->map[index_1][index_2] = '0';
 				return (1);
@@ -110,6 +117,8 @@ int	move_down(t_var *vars)
 		{
 			if (vars->map[index_1][index_2] == 'P')
 			{
+				if (vars->map[index_1 + 1][index_2] == '1')
+					return (2);
 				vars->map[index_1 + 1][index_2] = 'P';
 				vars->map[index_1][index_2] = '0';
 				return (2);
@@ -135,6 +144,8 @@ int	move_left(t_var *vars)
 		{
 			if (vars->map[index_1][index_2] == 'P')
 			{
+				if (vars->map[index_1][index_2 - 1] == '1')
+					return (3);
 				vars->map[index_1][index_2 - 1] = 'P';
 				vars->map[index_1][index_2] = '0';
 				return (3);
@@ -160,6 +171,8 @@ int	move_right(t_var *vars)
 		{
 			if (vars->map[index_1][index_2] == 'P')
 			{
+				if (vars->map[index_1][index_2 + 1] == '1')
+					return (4);
 				vars->map[index_1][index_2 + 1] = 'P';
 				vars->map[index_1][index_2] = '0';
 				return (4);
@@ -171,37 +184,3 @@ int	move_right(t_var *vars)
 	}
 	return (4);
 }
-
-// int	move_player(int keycode, t_var *vars)
-// {
-// 	if (keycode == 0 || keycode == 123 || keycode == 1 || keycode == 125 || keycode == 2 || keycode == 124 || keycode == 13 || keycode == 126)
-// 	{
-// 		palce_collectible(vars);
-// 		palce_walls(vars);
-// 		palce_player(vars);
-// 		palce_exit(vars);
-// 	}
-// 	if (vars->player_height != vars->collectible_height || vars->player_width != vars->collectible_width)
-// 		palce_collectible(vars);
-// 	if (keycode == 0 || keycode == 123)
-// 	{
-// 		vars->player_width -= 165;
-// 		mlx_put_image_to_window(vars->mlx, vars->window, vars->player_left, vars->player_width, vars->player_height);
-// 	}
-// 	if (keycode == 1 || keycode == 125)
-// 	{
-// 		vars->player_height += 165;
-// 		mlx_put_image_to_window(vars->mlx, vars->window, vars->player_down, vars->player_width, vars->player_height);
-// 	}
-// 	if (keycode == 2 || keycode == 124)
-// 	{
-// 		vars->player_width += 165;
-// 		mlx_put_image_to_window(vars->mlx, vars->window, vars->player_right, vars->player_width, vars->player_height);
-// 	}
-// 	if (keycode == 13 || keycode == 126)
-// 	{
-// 		vars->player_height -= 165;
-// 		mlx_put_image_to_window(vars->mlx, vars->window, vars->player_up, vars->player_width, vars->player_height);
-// 	}
-// 	return (0);
-// }

@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:08:43 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/08 10:56:07 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/11 09:42:32 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	link_images(t_var *vars)
 {
 	vars->relative_path_zero = "./images/zero.xpm";
 	vars->relative_path_one = "./images/one.xpm";
-	vars->relative_path_collectible = "./images/collectible.xpm";
+	vars->relative_path_collectible = "./images/collectible_DALLE.xpm";
 	vars->relative_path_exit = "./images/exit.xpm";
 	vars->relative_path_one = "./images/one.xpm";
 	vars->relative_path_player_up = "./images/player_up.xpm";

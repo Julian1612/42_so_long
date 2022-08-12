@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/10 21:04:33 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/11 17:11:26 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ typedef struct s_var {
 	int		collectible_width;
 	int		collectible_height;
 	char	**map;
+	int		moves;
+	int		collectible_counter;
+	int		collcetibles_beginning;
+
 }	t_var;
 
 void	build(void);
@@ -87,5 +91,6 @@ int		move_up(t_var *vars);
 int		move_down(t_var *vars);
 int		move_left(t_var *vars);
 int		move_right(t_var *vars);
+int		count_collectibles(t_var *vars);
 
 #endif
