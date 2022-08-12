@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/11 17:11:26 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/12 22:08:20 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_var {
 	int		moves;
 	int		collectible_counter;
 	int		collcetibles_beginning;
+	int		player_direction;
 
 }	t_var;
 

@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 23:27:10 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/11 17:07:56 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/12 22:09:08 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	palce_player(t_var *vars, int direction)
 		{
 			if (vars->map[index_1][index_2] == 'P')
 			{
+				if (direction == 0)
+					mlx_put_image_to_window(vars->mlx, vars->window, vars->player_up, (index_2 * 165), (index_1 * 165));
 				if (direction == 1)
 					mlx_put_image_to_window(vars->mlx, vars->window, vars->player_up, (index_2 * 165), (index_1 * 165));
 				if (direction == 2)
@@ -54,9 +56,14 @@ int	move_player(int keycode, t_var *vars)
 	direction = 0;
 	vars->moves += 1;
 	vars->collectible_counter = count_collectibles(vars);
-	printf("collectibles: %d available: %d\n", vars->collletibles_beginning ,vars->collectible_counter); // use my printf !!
+	printf("collectibles: %d available: %d\n", vars->collcetibles_beginning, vars->collectible_counter); // use my printf !!
 	printf("%d\n", vars->moves); // use my printf !!
-	if (keycode == 13)
+	if (keycode != 13 && keycode != 1 && keycode != 0 && keycode != 2)
+	{
+		new_render(vars, 1);
+		return (0);
+	}
+	else if (keycode == 13)
 		direction = move_up(vars);
 	else if (keycode == 1)
 		direction = move_down(vars);
@@ -182,5 +189,4 @@ int	move_right(t_var *vars)
 		index_2 = 0;
 		index_1 ++;
 	}
-	return (4);
 }
