@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf_percent.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 10:18:01 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/15 16:19:09 by jschneid         ###   ########.fr       */
+/*   Created: 2022/05/30 16:08:32 by jschneid          #+#    #+#             */
+/*   Updated: 2022/06/02 10:26:18 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-int	main(void)
+// Gives the 'print_char' function a '%' prints it to the
+// standart output and returns 1
+int	output_percent(void)
 {
-	build_window();
-	system("leaks so_long");
+	print_character('%');
+	return (1);
 }

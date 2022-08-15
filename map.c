@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:08:43 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/11 09:42:32 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/15 16:32:35 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,18 @@ void	xpm_to_file(t_var *vars)
 			&image_width, &image_height);
 	vars->player_right = mlx_xpm_file_to_image(vars->mlx, vars->relative_path_player_right,
 			&image_width, &image_height);
+}
+
+int	map_check(t_var *vars)
+{
+	int	index_1;
+	int	index_2;
+
+	index_1 = 0;
+	index_2 = 0;
+	while ()
+	{
+		/* code */
+	}
+
 }

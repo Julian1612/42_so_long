@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf_characters.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 10:18:01 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/15 16:19:09 by jschneid         ###   ########.fr       */
+/*   Created: 2022/05/30 16:09:46 by jschneid          #+#    #+#             */
+/*   Updated: 2022/06/02 10:25:53 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-int	main(void)
+// Gets the value from the argument and uses function 'put_char'
+// to print it to the standart output
+int	output_character(va_list arguments)
 {
-	build_window();
-	system("leaks so_long");
+	int	character;
+
+	character = va_arg(arguments, int);
+	print_character(character);
+	return (1);
 }

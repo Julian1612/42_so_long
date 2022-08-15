@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 23:27:10 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/15 14:20:52 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/15 14:25:47 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ int	move_player(int keycode, t_var *vars)
 	vars->collectible_counter = count_collectibles(vars);
 	printf("collectibles: %d available: %d\n", vars->collcetibles_beginning, vars->collectible_counter); // use my printf !!
 	printf("%d\n", vars->moves); // use my printf !!
-	if (keycode != 13 && keycode != 1 && keycode != 0 && keycode != 2)
+	printf("keycode: %d\n", keycode);
+	if (keycode != 13 && keycode != 1 && keycode != 0 && keycode != 2 && keycode != 53)
 	{
 		new_render(vars);
 		return (0);
@@ -66,6 +67,8 @@ int	move_player(int keycode, t_var *vars)
 		vars->player_direction = move_left(vars);
 	else if (keycode == 2)
 		vars->player_direction = move_right(vars);
+	else if (keycode == 53)
+		exit(0);
 	new_render(vars);
 	return (0);
 }
