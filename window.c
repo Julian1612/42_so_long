@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 16:08:45 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/12 09:32:39 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/15 10:20:06 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void	build_window(void)
 	get_map_measure(&vars);
 	initialize_map(&vars);
 	vars.moves = 0;
+	vars.player_direction = 1;
 	vars.collectible_counter = 0;
 	vars.collcetibles_beginning = 0; // kann man in einer function inizialiseiren
-	vars.collcetibles_beginning	 = count_collectibles(&vars);
+	vars.collcetibles_beginning = count_collectibles(&vars);
 	vars.mlx = mlx_init();
 	link_images(&vars);
 	vars.window = mlx_new_window(vars.mlx, (vars.map_width * 165), (vars.map_height * 165), "Space Jamming");
@@ -32,7 +33,7 @@ void	build_window(void)
 	build_background(&vars);
 	palce_collectible(&vars);
 	palce_walls(&vars);
-	palce_player(&vars, 1);
+	palce_player(&vars);
 	palce_exit(&vars);
 	mlx_key_hook(vars.window, move_player, &vars);
 	mlx_loop(vars.mlx);

@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/12 22:08:20 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/15 13:56:09 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,17 @@ void	xpm_to_file(t_var *vars);
 void	link_images(t_var *vars);
 int		move_player(int keycode, t_var *vars);
 void	build_background(t_var *vars);
-void	palce_player(t_var *vars, int direction);
+void	palce_player(t_var *vars);
 void	palce_collectible(t_var *vars);
 void	initialize_map(t_var *vars);
 void	palce_walls(t_var *vars);
 void	palce_exit(t_var *vars);
-void	new_render(t_var *vars, int direction);
+void	new_render(t_var *vars);
 int		move_up(t_var *vars);
 int		move_down(t_var *vars);
 int		move_left(t_var *vars);
 int		move_right(t_var *vars);
 int		count_collectibles(t_var *vars);
+int	game_exit(t_var *vars);
 
 #endif

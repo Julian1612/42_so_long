@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 13:46:09 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/10 13:46:43 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/15 13:56:18 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,11 @@ void	palce_exit(t_var *vars)
 		index_2 = 0;
 		index_1 ++;
 	}
+}
+
+int game_exit(t_var *vars)
+{
+	if (vars->collectible_counter == 0 )
+		exit(0);
+	return (1);
 }
