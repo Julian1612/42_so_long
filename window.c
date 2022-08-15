@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 16:08:45 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/15 10:20:06 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/15 19:57:11 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	build_window(void)
 
 	get_map_measure(&vars);
 	initialize_map(&vars);
+	map_check(&vars);
 	vars.moves = 0;
 	vars.player_direction = 1;
 	vars.collectible_counter = 0;

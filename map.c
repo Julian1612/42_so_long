@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:08:43 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/15 16:32:35 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/15 20:35:56 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,67 @@ void	xpm_to_file(t_var *vars)
 			&image_width, &image_height);
 }
 
-int	map_check(t_var *vars)
+void	map_check(t_var *vars)
 {
-	int	index_1;
-	int	index_2;
-
-	index_1 = 0;
-	index_2 = 0;
-	while ()
+	if (check_top(vars) == 1 || check_ground(vars) == 1 || check_left(vars) == 1 || check_right(vars) == 1)
 	{
-		/* code */
+		perror("The map must be closed/surrounded by walls");
+		exit (0);
 	}
+}
 
+int	check_top(t_var *vars)
+{
+	int	index;
+
+	index = 0;
+	while (vars->map[0][index] != '\0')
+	{
+		if (vars->map[0][index] != '1')
+			return (1);
+		index ++;
+	}
+	return (0);
+}
+
+int	check_ground(t_var *vars)
+{
+	int	index;
+
+	index = 0;
+	while (vars->map[vars->map_height -1][index] != '\0')
+	{
+		if (vars->map[(vars->map_height - 1)][index] != '1')
+			return (1);
+		index ++;
+	}
+	return (0);
+}
+
+int	check_left(t_var *vars)
+{
+	int	index;
+
+	index = 0;
+	while (index < vars->map_height)
+	{
+		if (vars->map[index][0] != '1')
+			return (1);
+		index ++;
+	}
+	return (0);
+}
+
+int	check_right(t_var *vars)
+{
+	int	index;
+
+	index = 0;
+	while (index < vars->map_height)
+	{
+		if (vars->map[index][(vars->map_width-1)] != '1')
+			return (1);
+		index ++;
+	}
+	return (0);
 }

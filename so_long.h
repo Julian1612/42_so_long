@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/15 13:56:09 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/15 19:56:45 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@ int		move_down(t_var *vars);
 int		move_left(t_var *vars);
 int		move_right(t_var *vars);
 int		count_collectibles(t_var *vars);
-int	game_exit(t_var *vars);
+int		game_exit(t_var *vars);
+void	map_check(t_var *vars);
+int		check_top(t_var *vars);
+int		check_ground(t_var *vars);
+int		check_left(t_var *vars);
+int		check_right(t_var *vars);
 
 #endif
