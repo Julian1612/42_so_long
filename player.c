@@ -6,16 +6,11 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 23:27:10 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/15 14:25:47 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/17 15:56:30 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// W: 13
-// A: 0
-// S: 1
-// D: 2
 
 void	palce_player(t_var *vars)
 {
@@ -51,9 +46,7 @@ int	move_player(int keycode, t_var *vars)
 {
 	vars->moves += 1;
 	vars->collectible_counter = count_collectibles(vars);
-	printf("collectibles: %d available: %d\n", vars->collcetibles_beginning, vars->collectible_counter); // use my printf !!
-	printf("%d\n", vars->moves); // use my printf !!
-	printf("keycode: %d\n", keycode);
+	ft_printf("%d\n", vars->moves);
 	if (keycode != 13 && keycode != 1 && keycode != 0 && keycode != 2 && keycode != 53)
 	{
 		new_render(vars);

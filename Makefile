@@ -6,11 +6,11 @@
 #    By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 10:32:35 by jschneid          #+#    #+#              #
-#    Updated: 2022/08/17 15:28:54 by jschneid         ###   ########.fr        #
+#    Updated: 2022/08/17 17:42:40 by jschneid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
+NAME = so_long.a
 
 FLAGS = -Wall -Werror -Wextra -Imlx -c $< -o $@
 

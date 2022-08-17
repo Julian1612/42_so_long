@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:08:43 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/16 20:30:40 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/17 21:48:14 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,66 @@ void	map_check(t_var *vars)
 		perror("The map must be closed/surrounded by walls");
 		exit (0);
 	}
+	if (check_player(vars) == 1)
+	{
+		perror("The number of players is wrong");
+		exit (0);
+	}
+	if (check_exit(vars) == 1)
+	{
+		perror("The number of exits is wrong");
+		exit (0);
+	}
+}
+
+int	check_player(t_var *vars)
+{
+	int	index_1;
+	int	index_2;
+	int	counter;
+
+	index_1 = 0;
+	index_2 = 0;
+	counter = 0;
+	while (index_1 < vars->map_height)
+	{
+		while (index_2 < vars->map_width)
+		{
+			if (vars->map[index_1][index_2] == 'P')
+				counter ++;
+			index_2 ++;
+		}
+		index_2 = 0;
+		index_1 ++;
+	}
+	if (counter > 1 || counter <= 0)
+		return (1);
+	return (0);
+}
+
+int	check_exit(t_var *vars)
+{
+	int	index_1;
+	int	index_2;
+	int	counter;
+
+	index_1 = 0;
+	index_2 = 0;
+	counter = 0;
+	while (index_1 < vars->map_height)
+	{
+		while (index_2 < vars->map_width)
+		{
+			if (vars->map[index_1][index_2] == 'E')
+				counter ++;
+			index_2 ++;
+		}
+		index_2 = 0;
+		index_1 ++;
+	}
+	if (counter > 1 || counter <= 0)
+		return (1);
+	return (0);
 }
 
 int	check_top(t_var *vars)

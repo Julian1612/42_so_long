@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/17 11:17:17 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/17 22:09:05 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,8 @@ int		check_top(t_var *vars);
 int		check_ground(t_var *vars);
 int		check_left(t_var *vars);
 int		check_right(t_var *vars);
+int		check_player(t_var *vars);
+int		check_exit(t_var *vars);
+// int		close_image(int keycode, t_var *vars);
 
 #endif

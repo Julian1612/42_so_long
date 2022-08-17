@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 16:08:45 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/17 15:06:54 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/17 22:09:21 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	build_window(void)
 	vars.moves = 0;
 	vars.player_direction = 1;
 	vars.collectible_counter = 0;
-	vars.collcetibles_beginning = 0; // kann man in einer function inizialiseiren
+	vars.collcetibles_beginning = 0;
 	vars.collcetibles_beginning = count_collectibles(&vars);
 	vars.mlx = mlx_init();
 	link_images(&vars);
@@ -36,9 +36,18 @@ void	build_window(void)
 	palce_walls(&vars);
 	palce_player(&vars);
 	palce_exit(&vars);
+	// mlx_hook(vars.window, 17, 1L<<2, close, &vars);
 	mlx_key_hook(vars.window, move_player, &vars);
 	mlx_loop(vars.mlx);
 }
+
+// int	close_image(int keycode, t_var *vars)
+// {
+// 	keycode = 0;
+// 	mlx_destroy_window(vars->mlx, vars->window);
+// 	exit (0);
+// 	return (0);
+// }
 
 void	build_background(t_var *vars)
 {
@@ -67,7 +76,6 @@ void	get_map_measure(t_var *vars)
 	fd = open("./map/map.ber", O_RDONLY);
 	vars->map_height = 1;
 	line = get_next_line(fd);
-	printf("hi\n");
 	while (get_next_line(fd))
 		vars->map_height += 1;
 	vars->map_width = (ft_strlen(line) - 1);
