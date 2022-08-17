@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:08:43 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/15 20:35:56 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/16 20:30:40 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	check_right(t_var *vars)
 	index = 0;
 	while (index < vars->map_height)
 	{
-		if (vars->map[index][(vars->map_width-1)] != '1')
+		if (vars->map[index][(vars->map_width - 1)] != '1')
 			return (1);
 		index ++;
 	}

@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 10:18:01 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/15 16:19:09 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/16 21:18:44 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,4 @@
 int	main(void)
 {
 	build_window();
-	system("leaks so_long");
 }

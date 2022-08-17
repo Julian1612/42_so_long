@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/15 19:56:45 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/17 11:17:17 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define SO_LONG_H
 # include <stdlib.h>
 # include <unistd.h>
-# include <mlx.h>
+# include "mlx.h"
 # include <fcntl.h>
+# include "./libft/libft.h"
 ////////////////////
 # include <stdio.h>
 ////////////////////
@@ -69,13 +70,6 @@ void	build_map(t_var *vars);
 char	*get_next_line(int fd);
 char	*get_buffer(char *buffer, int fd);
 char	*cut_buffer(char *buffer, char **line);
-size_t	ft_strlen(const char *a);
-char	*ft_strchr(char const *s, int c);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strdup(const char *s1);
-size_t	ft_strlcpy(char *dst, const char *src, size_t destsize);
-size_t	ft_strlen(const char *a);
 void	get_map_measure(t_var	*vars);
 void	build_map(t_var *vars);
 void	xpm_to_file(t_var *vars);

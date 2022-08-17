@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 16:08:45 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/15 19:57:11 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/17 15:06:54 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	get_map_measure(t_var *vars)
 	fd = open("./map/map.ber", O_RDONLY);
 	vars->map_height = 1;
 	line = get_next_line(fd);
+	printf("hi\n");
 	while (get_next_line(fd))
 		vars->map_height += 1;
 	vars->map_width = (ft_strlen(line) - 1);
