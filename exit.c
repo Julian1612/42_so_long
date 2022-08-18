@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 13:46:09 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/15 19:04:15 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/18 21:35:32 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	palce_exit(t_var *vars)
 		while (index_2 < vars->map_width)
 		{
 			if (vars->map[index_1][index_2] == 'E')
-				mlx_put_image_to_window(vars->mlx, vars->window, vars->exit, (index_2 * 165), (index_1 * 165));
+				mlx_put_image_to_window(vars->mlx, vars->window, vars->exit,
+					(index_2 * 165), (index_1 * 165));
 			index_2 ++;
 		}
 		index_2 = 0;
@@ -32,9 +33,26 @@ void	palce_exit(t_var *vars)
 	}
 }
 
-int		game_exit(t_var *vars)
+int	game_exit(t_var *vars)
 {
 	if (vars->collectible_counter == 0)
+	{
+		free_variables(vars);
+		system("leaks so_long.a");
 		exit(0);
+	}
 	return (1);
+}
+
+void	free_variables(t_var *vars)
+{
+	int	index_1;
+
+	index_1 = 0;
+	while (index_1 < vars->map_height)
+	{
+		free(vars->map[index_1]);
+		index_1 ++;
+	}
+	free(vars->map);
 }

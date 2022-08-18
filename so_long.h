@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/18 13:40:31 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/18 21:54:50 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,7 @@ typedef struct s_var {
 
 }	t_var;
 
-void	build(void);
-void	build_window(void);
-void	put_pictures(void);
-void	build_map(t_var *vars);
-char	*get_next_line(int fd);
-char	*get_buffer(char *buffer, int fd);
-char	*cut_buffer(char *buffer, char **line);
 void	get_map_measure(t_var	*vars);
-void	build_map(t_var *vars);
 void	xpm_to_file(t_var *vars);
 void	link_images(t_var *vars);
 int		move_player(int keycode, t_var *vars);
@@ -95,6 +87,10 @@ int		check_left(t_var *vars);
 int		check_right(t_var *vars);
 int		check_player(t_var *vars);
 int		check_exit(t_var *vars);
+int		check_collectible(t_var *vars);
 int		close_image(int keycode, t_var *vars);
+void	free_variables(t_var *vars);
+void	initialize_variables(t_var *vars);
+void	put_image(t_var *vars, int index_1, int index_2);
 
 #endif

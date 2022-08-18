@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 10:57:45 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/15 12:35:25 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/18 21:35:39 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	palce_collectible(t_var *vars)
 		{
 			if (vars->map[index_1][index_2] == 'C')
 			{
-				mlx_put_image_to_window(vars->mlx, vars->window, vars->collectible, (index_2 * 165), (index_1 * 165));
+				mlx_put_image_to_window(vars->mlx, vars->window,
+					vars->collectible, (index_2 * 165), (index_1 * 165));
 				vars->collectible_counter += 1;
 			}
 			index_2 ++;

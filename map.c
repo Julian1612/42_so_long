@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:08:43 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/17 21:48:14 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/18 21:37:58 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,33 @@ void	xpm_to_file(t_var *vars)
 			vars->relative_path_collectible, &image_width, &image_height);
 	vars->exit = mlx_xpm_file_to_image(vars->mlx, vars->relative_path_exit,
 			&image_width, &image_height);
-	vars->player_up = mlx_xpm_file_to_image(vars->mlx, vars->relative_path_player_up,
+	vars->player_up = mlx_xpm_file_to_image(vars->mlx,
+			vars->relative_path_player_up,
 			&image_width, &image_height);
-	vars->player_down = mlx_xpm_file_to_image(vars->mlx, vars->relative_path_player_down,
+	vars->player_down = mlx_xpm_file_to_image(vars->mlx,
+			vars->relative_path_player_down,
 			&image_width, &image_height);
-	vars->player_left = mlx_xpm_file_to_image(vars->mlx, vars->relative_path_player_left,
+	vars->player_left = mlx_xpm_file_to_image(vars->mlx,
+			vars->relative_path_player_left,
 			&image_width, &image_height);
-	vars->player_right = mlx_xpm_file_to_image(vars->mlx, vars->relative_path_player_right,
+	vars->player_right = mlx_xpm_file_to_image(vars->mlx,
+			vars->relative_path_player_right,
 			&image_width, &image_height);
 }
 
 void	map_check(t_var *vars)
 {
-	if (check_top(vars) == 1 || check_ground(vars) == 1 || check_left(vars) == 1 || check_right(vars) == 1)
+	if (check_top(vars) == 1 || check_ground(vars) == 1
+		|| check_left(vars) == 1 || check_right(vars) == 1)
 	{
 		perror("The map must be closed/surrounded by walls");
+		system("leaks so_long.a");
 		exit (0);
 	}
 	if (check_player(vars) == 1)
 	{
 		perror("The number of players is wrong");
+		system("leaks so_long.a");
 		exit (0);
 	}
 	if (check_exit(vars) == 1)
@@ -65,6 +72,36 @@ void	map_check(t_var *vars)
 		perror("The number of exits is wrong");
 		exit (0);
 	}
+	if (check_collectible(vars) == 1)
+	{
+		perror("The number of collectibles is wrong");
+		exit (0);
+	}
+}
+
+int	check_collectible(t_var *vars)
+{
+	int	index_1;
+	int	index_2;
+	int	counter;
+
+	index_1 = 0;
+	index_2 = 0;
+	counter = 0;
+	while (index_1 < vars->map_height)
+	{
+		while (index_2 < vars->map_width)
+		{
+			if (vars->map[index_1][index_2] == 'C')
+				counter ++;
+			index_2 ++;
+		}
+		index_2 = 0;
+		index_1 ++;
+	}
+	if (counter <= 0)
+		return (1);
+	return (0);
 }
 
 int	check_player(t_var *vars)
@@ -89,86 +126,5 @@ int	check_player(t_var *vars)
 	}
 	if (counter > 1 || counter <= 0)
 		return (1);
-	return (0);
-}
-
-int	check_exit(t_var *vars)
-{
-	int	index_1;
-	int	index_2;
-	int	counter;
-
-	index_1 = 0;
-	index_2 = 0;
-	counter = 0;
-	while (index_1 < vars->map_height)
-	{
-		while (index_2 < vars->map_width)
-		{
-			if (vars->map[index_1][index_2] == 'E')
-				counter ++;
-			index_2 ++;
-		}
-		index_2 = 0;
-		index_1 ++;
-	}
-	if (counter > 1 || counter <= 0)
-		return (1);
-	return (0);
-}
-
-int	check_top(t_var *vars)
-{
-	int	index;
-
-	index = 0;
-	while (vars->map[0][index] != '\0')
-	{
-		if (vars->map[0][index] != '1')
-			return (1);
-		index ++;
-	}
-	return (0);
-}
-
-int	check_ground(t_var *vars)
-{
-	int	index;
-
-	index = 0;
-	while (vars->map[vars->map_height -1][index] != '\0')
-	{
-		if (vars->map[(vars->map_height - 1)][index] != '1')
-			return (1);
-		index ++;
-	}
-	return (0);
-}
-
-int	check_left(t_var *vars)
-{
-	int	index;
-
-	index = 0;
-	while (index < vars->map_height)
-	{
-		if (vars->map[index][0] != '1')
-			return (1);
-		index ++;
-	}
-	return (0);
-}
-
-int	check_right(t_var *vars)
-{
-	int	index;
-
-	index = 0;
-	while (index < vars->map_height)
-	{
-		if (vars->map[index][(vars->map_width - 1)] != '1')
-			return (1);
-		index ++;
-	}
 	return (0);
 }

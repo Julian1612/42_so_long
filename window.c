@@ -6,44 +6,16 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 16:08:45 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/18 13:43:02 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/18 21:50:23 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	build_window(void)
-{
-	t_var	vars;
-
-	get_map_measure(&vars);
-	initialize_map(&vars);
-	map_check(&vars);
-	vars.moves = 0;
-	vars.player_direction = 1;
-	vars.collectible_counter = 0;
-	vars.collcetibles_beginning = 0;
-	vars.collcetibles_beginning = count_collectibles(&vars);
-	vars.mlx = mlx_init();
-	link_images(&vars);
-	vars.window = mlx_new_window(vars.mlx, (vars.map_width * 165), (vars.map_height * 165), "Space Jamming");
-	vars.image = mlx_new_image(vars.mlx, (vars.map_width * 165), (vars.map_height * 165));
-	vars.address = mlx_get_data_addr(vars.image, &vars.bites_per_pixel,
-			&vars.line_length, &vars.endian);
-	xpm_to_file(&vars);
-	build_background(&vars);
-	palce_collectible(&vars);
-	palce_walls(&vars);
-	palce_player(&vars);
-	palce_exit(&vars);
-	mlx_hook(vars.window, 17, 1L<<0, close_image, &vars);
-	mlx_key_hook(vars.window, move_player, &vars);
-	mlx_loop(vars.mlx);
-}
-
 int	close_image(int keycode, t_var *vars)
 {
-	keycode = 0;
+	keycode += 5;
+	system("leaks so_long.a");
 	mlx_destroy_window(vars->mlx, vars->window);
 	return (0);
 }
@@ -59,7 +31,8 @@ void	build_background(t_var *vars)
 	{
 		while (width < (vars->map_width * 165))
 		{
-			mlx_put_image_to_window(vars->mlx, vars->window, vars->zero, width, height);
+			mlx_put_image_to_window(vars->mlx, vars->window,
+				vars->zero, width, height);
 			width += 165;
 		}
 		width = 0;
@@ -75,9 +48,19 @@ void	get_map_measure(t_var *vars)
 	fd = open("./map/map.ber", O_RDONLY);
 	vars->map_height = 1;
 	line = get_next_line(fd);
-	while (get_next_line(fd))
-		vars->map_height += 1;
 	vars->map_width = (ft_strlen(line) - 1);
+	while (line != NULL)
+	{
+		free (line);
+		line = get_next_line(fd);
+		if (line == NULL)
+		{
+			free (line);
+			break ;
+		}
+		vars->map_height += 1;
+	}
+	free (line);
 	close (fd);
 }
 
@@ -104,4 +87,13 @@ void	initialize_map(t_var *vars)
 	}
 	close(fd);
 	vars->map[x] = NULL;
+}
+
+void	initialize_variables(t_var *vars)
+{
+	vars->moves = 0;
+	vars->player_direction = 1;
+	vars->collectible_counter = 0;
+	vars->collcetibles_beginning = 0;
+	vars->collcetibles_beginning = count_collectibles(vars);
 }
