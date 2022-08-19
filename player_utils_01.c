@@ -6,11 +6,11 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:38:41 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/19 12:41:08 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:12:40 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <so_long.h>
+#include "so_long.h"
 
 int	move_up(t_var *vars)
 {

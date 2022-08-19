@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:08:43 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/18 21:37:58 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/19 17:07:30 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ void	xpm_to_file(t_var *vars)
 
 void	map_check(t_var *vars)
 {
+	if (check_invalid_character(vars) == 1)
+	{
+		perror("There is a invalid character in the map");
+		exit (0);
+	}
 	if (check_top(vars) == 1 || check_ground(vars) == 1
 		|| check_left(vars) == 1 || check_right(vars) == 1)
 	{
@@ -77,6 +82,27 @@ void	map_check(t_var *vars)
 		perror("The number of collectibles is wrong");
 		exit (0);
 	}
+}
+
+int	check_invalid_character(t_var *vars)
+{
+	int	index_1;
+	int	index_2;
+
+	index_1 = 0;
+	index_2 = 0;
+	while (index_1 < vars->map_height)
+	{
+		while (index_2 < vars->map_width)
+		{
+			if (vars->map[index_1][index_2] != '0' || vars->map[index_1][index_2] != '1' || vars->map[index_1][index_2] != 'E' || vars->map[index_1][index_2] != 'P' || vars->map[index_1][index_2] != 'C')
+				return (1);
+			index_2 ++;
+		}
+		index_2 = 0;
+		index_1 ++;
+	}
+	return (0);
 }
 
 int	check_collectible(t_var *vars)

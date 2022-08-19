@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/19 12:37:09 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/19 17:05:06 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ void	move_up_update(t_var *vars, int index_1, int index_2);
 void	move_down_update(t_var *vars, int index_1, int index_2);
 void	move_left_update(t_var *vars, int index_1, int index_2);
 void	move_right_update(t_var *vars, int index_1, int index_2);
+int		check_invalid_character(t_var *vars);
 
 #endif
