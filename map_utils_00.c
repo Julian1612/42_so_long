@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:31:50 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/19 15:29:37 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/19 19:13:51 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int	check_exit(t_var *vars)
 		index_1 ++;
 	}
 	if (counter <= 0)
-		return (1);
+	{
+		perror("The number of exits is wrong");
+		exit (0);
+	}
 	return (0);
 }
 

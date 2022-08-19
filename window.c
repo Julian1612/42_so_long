@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 16:08:45 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/19 16:35:03 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:57:40 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ void	get_map_measure(t_var *vars)
 	vars->map_width = (ft_strlen(line) - 1);
 	while (line != NULL)
 	{
+		if (ft_strlen(line) - 1 != (size_t) vars->map_width)
+		{
+			perror("The map is not a rectangular");
+			exit (0);
+		}
 		free (line);
 		line = get_next_line(fd);
 		if (line == NULL)
@@ -69,31 +74,27 @@ void	initialize_map(t_var *vars)
 	int		index;
 	int		fd;
 	char	*line;
-	int		x;
-	int		y;
 
 	fd = open("./map/map.ber", O_RDONLY);
-	y = vars->map_height;
-	x = vars->map_width + 1;
-	vars->map = (char **) malloc((y + 1) * sizeof(char *));
+	vars->map = (char **) malloc((vars->map_height + 1) * sizeof(char *));
 	index = 0;
-	while (index < y)
+	while (index < vars->map_height)
 	{
-		vars->map[index] = (char *)malloc(x * sizeof(char));
+		vars->map[index] = (char *)malloc((vars->map_width + 1) * sizeof(char));
 		if (vars->map == NULL)
 		{
 			free (vars->map);
 			system("leaks so_long.a");
 			close (0);
 		}
-		vars->map[index][x - 1] = '\0';
+		vars->map[index][(vars->map_width + 1) - 1] = '\0';
 		line = get_next_line(fd);
-		ft_strlcpy(vars->map[index], line, x);
+		ft_strlcpy(vars->map[index], line, (vars->map_width + 1));
 		free(line);
 		index++;
 	}
 	close(fd);
-	vars->map[y] = NULL;
+	vars->map[vars->map_height] = NULL;
 }
 
 void	initialize_variables(t_var *vars)

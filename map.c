@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:08:43 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/19 17:07:30 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/19 19:22:04 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ void	xpm_to_file(t_var *vars)
 
 void	map_check(t_var *vars)
 {
+	check_player(vars);
+	check_collectible(vars);
+	check_exit(vars);
 	if (check_invalid_character(vars) == 1)
 	{
 		perror("There is a invalid character in the map");
@@ -63,23 +66,6 @@ void	map_check(t_var *vars)
 		|| check_left(vars) == 1 || check_right(vars) == 1)
 	{
 		perror("The map must be closed/surrounded by walls");
-		system("leaks so_long.a");
-		exit (0);
-	}
-	if (check_player(vars) == 1)
-	{
-		perror("The number of players is wrong");
-		system("leaks so_long.a");
-		exit (0);
-	}
-	if (check_exit(vars) == 1)
-	{
-		perror("The number of exits is wrong");
-		exit (0);
-	}
-	if (check_collectible(vars) == 1)
-	{
-		perror("The number of collectibles is wrong");
 		exit (0);
 	}
 }
@@ -95,7 +81,11 @@ int	check_invalid_character(t_var *vars)
 	{
 		while (index_2 < vars->map_width)
 		{
-			if (vars->map[index_1][index_2] != '0' || vars->map[index_1][index_2] != '1' || vars->map[index_1][index_2] != 'E' || vars->map[index_1][index_2] != 'P' || vars->map[index_1][index_2] != 'C')
+			if (vars->map[index_1][index_2] != '0'
+				&& vars->map[index_1][index_2] != '1'
+				&& vars->map[index_1][index_2] != 'E'
+				&& vars->map[index_1][index_2] != 'P'
+				&& vars->map[index_1][index_2] != 'C')
 				return (1);
 			index_2 ++;
 		}
@@ -126,31 +116,9 @@ int	check_collectible(t_var *vars)
 		index_1 ++;
 	}
 	if (counter <= 0)
-		return (1);
-	return (0);
-}
-
-int	check_player(t_var *vars)
-{
-	int	index_1;
-	int	index_2;
-	int	counter;
-
-	index_1 = 0;
-	index_2 = 0;
-	counter = 0;
-	while (index_1 < vars->map_height)
 	{
-		while (index_2 < vars->map_width)
-		{
-			if (vars->map[index_1][index_2] == 'P')
-				counter ++;
-			index_2 ++;
-		}
-		index_2 = 0;
-		index_1 ++;
+		perror("The number of collectibles is wrong");
+		exit (0);
 	}
-	if (counter > 1 || counter <= 0)
-		return (1);
 	return (0);
 }
