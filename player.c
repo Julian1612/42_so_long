@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 23:27:10 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/18 21:55:15 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:39:53 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,33 +86,4 @@ void	new_render(t_var *vars)
 	palce_walls(vars);
 	palce_player(vars);
 	palce_exit(vars);
-}
-
-int	move_up(t_var *vars)
-{
-	int	index_1;
-	int	index_2;
-
-	index_1 = 0;
-	index_2 = 0;
-	while (index_1 < vars->map_height)
-	{
-		while (index_2 < vars->map_width)
-		{
-			if (vars->map[index_1][index_2] == 'P')
-			{
-				if (vars->map[index_1 - 1][index_2] == 'E' && game_exit(vars) == 1)
-					return (1);
-				if (vars->map[index_1 - 1][index_2] == '1')
-					return (1);
-				vars->map[index_1 - 1][index_2] = 'P';
-				vars->map[index_1][index_2] = '0';
-				return (1);
-			}
-			index_2 ++;
-		}
-		index_2 = 0;
-		index_1 ++;
-	}
-	return (1);
 }

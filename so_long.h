@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/18 21:54:50 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:37:09 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,9 @@ int		close_image(int keycode, t_var *vars);
 void	free_variables(t_var *vars);
 void	initialize_variables(t_var *vars);
 void	put_image(t_var *vars, int index_1, int index_2);
+void	move_up_update(t_var *vars, int index_1, int index_2);
+void	move_down_update(t_var *vars, int index_1, int index_2);
+void	move_left_update(t_var *vars, int index_1, int index_2);
+void	move_right_update(t_var *vars, int index_1, int index_2);
 
 #endif

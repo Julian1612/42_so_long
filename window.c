@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 16:08:45 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/18 21:50:23 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/18 21:58:05 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	close_image(int keycode, t_var *vars)
 {
-	keycode += 5;
+	keycode = 5;
 	system("leaks so_long.a");
 	mlx_destroy_window(vars->mlx, vars->window);
 	return (0);
