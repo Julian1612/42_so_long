@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:22:06 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/20 22:30:51 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/20 22:45:01 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ void	file_checker(t_var *vars, int argc, char **argv)
 	index_1 = 0;
 	vars->argc = argc;
 	vars->argv = argv;
+	if (vars->argc <= 1)
+	{
+		perror("Please enter a file path");
+		exit (0);
+	}
 	descriptor_size = ft_strlen(vars->argv[1]);
 	if (vars->argv[1][descriptor_size - 3] != 'b'
 		|| vars->argv[1][descriptor_size - 2] != 'e'

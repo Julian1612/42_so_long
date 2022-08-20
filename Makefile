@@ -6,7 +6,7 @@
 #    By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 10:32:35 by jschneid          #+#    #+#              #
-#    Updated: 2022/08/20 21:08:41 by jschneid         ###   ########.fr        #
+#    Updated: 2022/08/20 22:47:09 by jschneid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = so_long
 
 FLAGS = -Wall -Werror -Wextra -Imlx -c $< -o $@
 
-MANDATORY = main.c player_utils_00.c player_utils_01.c player.c map.c map_utils_00.c map_utils_01.c window.c collectible.c wall.c exit.c
+MANDATORY = main.c player_utils_00.c player_utils_01.c player.c map.c map_utils_00.c map_utils_01.c window.c window_utils_00.c collectible.c wall.c exit.c
 
 CC = gcc
 

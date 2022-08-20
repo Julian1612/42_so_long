@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 16:08:45 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/20 22:13:40 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/20 22:46:46 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,4 @@ void	initialize_variables(t_var *vars)
 	vars->collcetibles_beginning = 0;
 	vars->collcetibles_beginning = count_collectibles(vars);
 	vars->map_height = 1;
-}
-
-void	fd_check(int fd)
-{
-	if (fd == -1)
-	{
-		perror("File not found");
-		exit (0);
-	}
 }
