@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 16:08:45 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/19 18:57:40 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/20 14:26:15 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	close_image(int keycode, t_var *vars)
 {
 	keycode = 5;
-	system("leaks so_long.a");
 	mlx_destroy_window(vars->mlx, vars->window);
 	return (0);
 }
@@ -84,7 +83,6 @@ void	initialize_map(t_var *vars)
 		if (vars->map == NULL)
 		{
 			free (vars->map);
-			system("leaks so_long.a");
 			close (0);
 		}
 		vars->map[index][(vars->map_width + 1) - 1] = '\0';

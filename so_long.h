@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/19 17:05:06 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/20 14:54:10 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 # include "mlx.h"
 # include <fcntl.h>
 # include "./libft/libft.h"
-////////////////////
 # include <stdio.h>
-////////////////////
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10

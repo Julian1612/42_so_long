@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   map_utils_00.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:31:50 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/19 19:13:51 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/20 14:33:03 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	check_exit(t_var *vars)
 	if (counter <= 0)
 	{
 		perror("The number of exits is wrong");
+		free_variables(vars);
 		exit (0);
 	}
 	return (0);

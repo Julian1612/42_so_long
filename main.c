@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 10:18:01 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/18 21:50:16 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/20 14:33:13 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(void)
 	vars.mlx = mlx_init();
 	link_images(&vars);
 	vars.window = mlx_new_window(vars.mlx,
-			(vars.map_width * 165), (vars.map_height * 165), "Space Jamming");
+			(vars.map_width * 165), (vars.map_height * 165), "Space Hunter");
 	vars.image = mlx_new_image(vars.mlx,
 			(vars.map_width * 165), (vars.map_height * 165));
 	vars.address = mlx_get_data_addr(vars.image, &vars.bites_per_pixel,

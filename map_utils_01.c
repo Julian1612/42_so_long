@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:22:06 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/19 19:22:27 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/20 14:31:52 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	check_player(t_var *vars)
 	if (counter > 1 || counter <= 0)
 	{
 		perror("The number of players is wrong");
+		free_variables(vars);
 		exit (0);
 	}
 	return (0);

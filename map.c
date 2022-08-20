@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:08:43 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/19 19:22:04 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/20 14:31:18 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,14 @@ void	map_check(t_var *vars)
 	if (check_invalid_character(vars) == 1)
 	{
 		perror("There is a invalid character in the map");
+		free_variables(vars);
 		exit (0);
 	}
 	if (check_top(vars) == 1 || check_ground(vars) == 1
 		|| check_left(vars) == 1 || check_right(vars) == 1)
 	{
 		perror("The map must be closed/surrounded by walls");
+		free_variables(vars);
 		exit (0);
 	}
 }
@@ -118,6 +120,7 @@ int	check_collectible(t_var *vars)
 	if (counter <= 0)
 	{
 		perror("The number of collectibles is wrong");
+		free_variables(vars);
 		exit (0);
 	}
 	return (0);

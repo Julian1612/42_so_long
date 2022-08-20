@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 13:46:09 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/18 21:35:32 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/20 14:25:23 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	game_exit(t_var *vars)
 	if (vars->collectible_counter == 0)
 	{
 		free_variables(vars);
-		system("leaks so_long.a");
 		exit(0);
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 23:27:10 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/19 15:11:20 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/20 14:23:56 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	move_player(int keycode, t_var *vars)
 	}
 	if (keycode == 53)
 	{
-		system("leaks so_long.a");
 		exit(0);
 	}
 	vars->moves += 1;
