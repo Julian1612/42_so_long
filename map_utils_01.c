@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:22:06 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/20 14:31:52 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/20 22:30:51 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,22 @@ int	check_player(t_var *vars)
 		exit (0);
 	}
 	return (0);
+}
+
+void	file_checker(t_var *vars, int argc, char **argv)
+{
+	int	index_1;
+	int	descriptor_size;
+
+	index_1 = 0;
+	vars->argc = argc;
+	vars->argv = argv;
+	descriptor_size = ft_strlen(vars->argv[1]);
+	if (vars->argv[1][descriptor_size - 3] != 'b'
+		|| vars->argv[1][descriptor_size - 2] != 'e'
+		|| vars->argv[1][descriptor_size - 1] != 'r')
+	{
+		perror("File not found");
+		exit (0);
+	}
 }

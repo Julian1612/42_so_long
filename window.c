@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 16:08:45 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/20 14:26:15 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/20 22:13:40 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	close_image(int keycode, t_var *vars)
 {
-	keycode = 5;
-	mlx_destroy_window(vars->mlx, vars->window);
+	(void) keycode;
+	(void) vars;
+	exit (0);
 	return (0);
 }
 
@@ -44,8 +45,8 @@ void	get_map_measure(t_var *vars)
 	int		fd;
 	char	*line;
 
-	fd = open("./map/map.ber", O_RDONLY);
-	vars->map_height = 1;
+	fd = open(vars->argv[1], O_RDONLY);
+	fd_check(fd);
 	line = get_next_line(fd);
 	vars->map_width = (ft_strlen(line) - 1);
 	while (line != NULL)
@@ -74,7 +75,8 @@ void	initialize_map(t_var *vars)
 	int		fd;
 	char	*line;
 
-	fd = open("./map/map.ber", O_RDONLY);
+	fd = open(vars->argv[1], O_RDONLY);
+	fd_check(fd);
 	vars->map = (char **) malloc((vars->map_height + 1) * sizeof(char *));
 	index = 0;
 	while (index < vars->map_height)
@@ -102,4 +104,14 @@ void	initialize_variables(t_var *vars)
 	vars->collectible_counter = 0;
 	vars->collcetibles_beginning = 0;
 	vars->collcetibles_beginning = count_collectibles(vars);
+	vars->map_height = 1;
+}
+
+void	fd_check(int fd)
+{
+	if (fd == -1)
+	{
+		perror("File not found");
+		exit (0);
+	}
 }

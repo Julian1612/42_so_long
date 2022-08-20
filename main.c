@@ -6,20 +6,21 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 10:18:01 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/20 14:33:13 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/20 22:29:36 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_var	vars;
 
+	initialize_variables(&vars);
+	file_checker(&vars, argc, argv);
 	get_map_measure(&vars);
 	initialize_map(&vars);
 	map_check(&vars);
-	initialize_variables(&vars);
 	vars.mlx = mlx_init();
 	link_images(&vars);
 	vars.window = mlx_new_window(vars.mlx,

@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:07:59 by jschneid          #+#    #+#             */
-/*   Updated: 2022/08/20 14:54:10 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/08/20 22:00:50 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct s_var {
 	int		collectible_counter;
 	int		collcetibles_beginning;
 	int		player_direction;
+	int		argc;
+	char	**argv;
 
 }	t_var;
 
@@ -95,5 +97,7 @@ void	move_down_update(t_var *vars, int index_1, int index_2);
 void	move_left_update(t_var *vars, int index_1, int index_2);
 void	move_right_update(t_var *vars, int index_1, int index_2);
 int		check_invalid_character(t_var *vars);
+void	file_checker(t_var *vars, int argc, char **argv);
+void	fd_check(int fd);
 
 #endif
